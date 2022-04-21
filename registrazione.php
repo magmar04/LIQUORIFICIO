@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Login & Registracion</title>
       <link rel="stylesheet" href="style.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,6 +61,36 @@
                      Not a member? <a href="">Signup now</a>
                   </div>
                </form>
+               <?php 
+               if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                   $conn = new mysqli($servername, $db_username, $db_password, $db_name);
+                //    if ($conn->connect_error{
+                //         die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
+                //    }
+                   $mail = $_POST["mail"];
+                   $password = $_POST["pw"];
+                   $sql = "SELECT mail, pw
+                   FROM utente
+                   WHERE mail = '$mail' AND pw ='$password'";
+                   $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
+                   if ($ris->num_rows == 0){
+                        echo "errore.";
+                        $conn->close();
+                    } else {
+                    $_SESSION["mail"]=$mail;
+                    $_SESSION["servername"]=$servername;
+                    $_SESSION["db_name"]=$db_name;
+                    $_SESSION["db_username"]=$db_username;
+                    $_SESSION["db_password"]=$db_password;
+
+                    $conn->close();
+                    header("location: index.php");
+                    }
+               }
+               ?>
+            
+      
+               <!-- signup -->
                <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" class="signup">
                <div class="field">
                      <input type="email" placeholder="Your Email Address" name="mail" required>
@@ -94,17 +125,17 @@
                   </div>
                </form>
                <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                  if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $conn = new mysqli($servername, $db_username, $db_password, $db_name);
                 //    if ($conn->connect_error{
                 //         die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
                 //    }
-                    $sql = "SELECT mail FROM utente WHERE mail = '".$_POST["mail"]."'";
-                    $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
-                    if ($ris->num_rows > 0){
+                     $sql = "SELECT mail FROM utente WHERE mail = '".$_POST["mail"]."'";
+                     $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
+                     if ($ris->num_rows > 0){
                         echo "Utente esiste già";
                         $conn->close();
-                    } else {
+                     } else {
                         $sql = "INSERT INTO  utente (mail, nome, cognome, pw, stato, citta, via, civico)
                         VALUES ('".$_POST["mail"]."', '".$_POST["nome"]."', '".$_POST["cognome"]."', '".$_POST["pw"]."', '".$_POST["stato"]."', '".$_POST["citta"]."', '".$_POST["via"]."', '".$_POST["civico"]."')";
                         if($conn->query($sql) === true) {
@@ -113,8 +144,8 @@
                         } else {
                             echo "Registrazione non riuscita: " . $conn->error;
                         }
-                    }
-                }
+                     }
+                  }
                ?>
             </div>
          </div>

@@ -27,40 +27,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    
-    <div class="bs-component">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="http://www.liquorimariani.it/wp-content/uploads/2015/10/logo-bianco.png" width="80" height="40" alt="logo">
-                </a>
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarColor01">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./prodotti.php">Prodotti</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle show" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Area Riservata</a>
-                        <div class="dropdown-menu show" data-bs-popper="none">
-                            <a class="dropdown-item" href="./login.php">Login</a>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </div>
-                    </ul>
-                    
-                    <form class="d-flex">
-                        <a class="nav-link" href="./carrello.php" style="color: white" >
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="badge badge-primary rounded-pill bg-secondary">1</span>
-                        </a>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-        
-        </nav>
-
       <div class="wrapper">
          <div class="title-text">
             <div class="title login">
@@ -98,31 +64,31 @@
                   </div>
                </form>
                <?php 
-               // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-               //     $conn = new mysqli($servername, $db_username, $db_password, $db_name);
-               //  //    if ($conn->connect_error{
-               //  //         die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-               //  //    }
-               //     $mail = $_POST["mail"];
-               //     $password = $_POST["pw"];
-               //     $sql = "SELECT mail, pw
-               //     FROM utente
-               //     WHERE mail = '$mail' AND pw ='$password'";
-               //     $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
-               //     if ($ris->num_rows == 0){
-               //          echo "errore.";
-               //          $conn->close();
-               //      } else {
-               //      $_SESSION["mail"]=$mail;
-               //      $_SESSION["servername"]=$servername;
-               //      $_SESSION["db_name"]=$db_name;
-               //      $_SESSION["db_username"]=$db_username;
-               //      $_SESSION["db_password"]=$db_password;
+               if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                   $conn = new mysqli($servername, $db_username, $db_password, $db_name);
+                //    if ($conn->connect_error{
+                //         die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
+                //    }
+                   $mail = $_POST["mail"];
+                   $password = $_POST["pw"];
+                   $sql = "SELECT mail, pw
+                   FROM utente
+                   WHERE mail = '$mail' AND pw ='$password'";
+                   $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
+                   if ($ris->num_rows == 0){
+                        echo "errore.";
+                        $conn->close();
+                    } else {
+                    $_SESSION["mail"]=$mail;
+                    $_SESSION["servername"]=$servername;
+                    $_SESSION["db_name"]=$db_name;
+                    $_SESSION["db_username"]=$db_username;
+                    $_SESSION["db_password"]=$db_password;
 
-               //      $conn->close();
-               //      header("location: index.php");
-               //      }
-               // }
+                    $conn->close();
+                    header("location: index.php");
+                    }
+               }
                ?>
 
                <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" class="signup">
@@ -159,27 +125,32 @@
                   </div>
                </form>
                <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $conn = new mysqli($servername, $db_username, $db_password, $db_name);
-                //    if ($conn->connect_error{
-                //         die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                //    }
-                    $sql = "SELECT mail FROM utente WHERE mail = '".$_POST["mail"]."'";
-                    $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
-                    if ($ris->num_rows > 0){
-                        echo "Utente esiste già";
-                        $conn->close();
-                    } else {
-                        $sql = "INSERT INTO  utente (mail, nome, cognome, pw, stato, citta, via, civico)
-                        VALUES ('".$_POST["mail"]."', '".$_POST["nome"]."', '".$_POST["cognome"]."', '".$_POST["pw"]."', '".$_POST["stato"]."', '".$_POST["citta"]."', '".$_POST["via"]."', '".$_POST["civico"]."')";
-                        if($conn->query($sql) === true) {
-                            $conn->close();
-                            header("location: index.php");
+               
+               if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                  if($_POST["pw"] == $_POST["pwsc"]){
+                     $conn = new mysqli($servername, $db_username, $db_password, $db_name);
+                     //    if ($conn->connect_error{
+                     //         die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
+                     //    }
+                         $sql = "SELECT mail FROM utente WHERE mail = '".$_POST["mail"]."'";
+                         $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
+                        if ($ris->num_rows > 0){
+                             echo "Utente esiste già";
+                             $conn->close();
                         } else {
-                            echo "Registrazione non riuscita: " . $conn->error;
+                             $sql = "INSERT INTO  utente (mail, nome, cognome, pw, stato, citta, via, civico)
+                             VALUES ('".$_POST["mail"]."', '".$_POST["nome"]."', '".$_POST["cognome"]."', '".$_POST["pw"]."', '".$_POST["stato"]."', '".$_POST["citta"]."', '".$_POST["via"]."', '".$_POST["civico"]."')";
+                              if($conn->query($sql) === true) {
+                                 $conn->close();
+                                 header("location: index.php");
+                              } else {
+                                 echo "Registrazione non riuscita: " . $conn->error;
+                              }
                         }
-                    }
-                }
+                  } else {
+                     echo "Le password non corrispondo.";
+                  }
+               }
                ?>
             </div>
          </div>
@@ -204,10 +175,6 @@
          });
       </script>
 
-<footer class="bg-primary">
-        <hr>
-        <p class="container text-light" > &copy; Copyright 2022 </p>
-    </footer>
     
     <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
     <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

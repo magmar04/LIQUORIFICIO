@@ -6,7 +6,7 @@
     <title>Liquorificio Mariani E-commerce</title>
     <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.css">
     <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
-    <link rel="stylesheet" href="./style.css">
+    <!-- <link rel="stylesheet" href="./style.css"> -->
     <?php /*$servername = "localhost", $db_username = "root", $db_password = "", $db_name = "liquori_mariani" */
         session_start();
         if(isset($_SESSION['username'])){
@@ -23,6 +23,12 @@
             $username = "";
             $password = "";
         }
+
+        $servername = "localhost";
+            $db_name = "liquori_mariani";
+            $db_username = "root";
+            $db_password = "";
+        $conn = new mysqli($servername, $db_username, $db_password, $db_name);
     ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>

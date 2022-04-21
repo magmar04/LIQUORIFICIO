@@ -26,10 +26,10 @@ html,body{
   height: 100%;
   width: 100%;
   place-items: center;
-  background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+  background: -webkit-linear-gradient(left, #000000, #00000065);
 }
 ::selection{
-  background: #fa4299;
+  background: #000000;
   color: #fff;
 }
 .wrapper{
@@ -41,6 +41,7 @@ html,body{
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
 .wrapper .title-text{
+  color: #000;
   display: flex;
   width: 200%;
 }
@@ -84,7 +85,7 @@ html,body{
   left: 0;
   z-index: 0;
   border-radius: 5px;
-  background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+  background: -webkit-linear-gradient(left, #000000, #00000065);
   transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
 input[type="radio"]{
@@ -94,15 +95,15 @@ input[type="radio"]{
   left: 50%;
 }
 #signup:checked ~ label.signup{
-  color: #fff;
+  color: rgb(255, 255, 255);
   cursor: default;
   user-select: none;
 }
 #signup:checked ~ label.login{
-  color: #000;
+  color: rgb(0, 0, 0);
 }
 #login:checked ~ label.signup{
-  color: #000;
+  color: rgb(0, 0, 0);
 }
 #login:checked ~ label.login{
   cursor: default;
@@ -137,7 +138,7 @@ input[type="radio"]{
   transition: all 0.3s ease;
 }
 .form-inner form .field input:focus{
-  border-color: #fc83bb;
+  border-color: #000000;
   /* box-shadow: inset 0 0 3px #fb6aae; */
 }
 .form-inner form .field input::placeholder{
@@ -151,12 +152,13 @@ form .field input:focus::placeholder{
   margin-top: 5px;
 }
 .form-inner form .signup-link{
+  color: #000;
   text-align: center;
   margin-top: 30px;
 }
 .form-inner form .pass-link a,
 .form-inner form .signup-link a{
-  color: #fa4299;
+  color: #000000;
   text-decoration: none;
 }
 .form-inner form .pass-link a:hover,
@@ -175,7 +177,7 @@ form .btn .btn-layer{
   width: 300%;
   position: absolute;
   left: -100%;
-  background: -webkit-linear-gradient(right, #a445b2, #fa4299, #a445b2, #fa4299);
+  background: -webkit-linear-gradient(right, #000000, #00000065, #000000, #00000065);
   border-radius: 5px;
   transition: all 0.4s ease;;
 }
@@ -198,66 +200,3 @@ form .btn input[type="submit"]{
 }
 
   
-  /* Carousel */
-  .carousel {
-    margin-bottom: 4rem;
-  }
-  .carousel-caption {
-    bottom: 3rem;
-    z-index: 10;
-  }
-  
-  .carousel-item {
-    height: 32rem;
-  }
-  .carousel-item > img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    height: 32rem;
-  }
-  
-  
-  .marketing .col-lg-4 {
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-  .marketing h2 {
-    font-weight: 400;
-  }
-  .marketing .col-lg-4 p {
-    margin-right: .75rem;
-    margin-left: .75rem;
-  }
-  
-  
-  .featurette-divider {
-    margin: 5rem 0; 
-  }
-  
-  
-  .featurette-heading {
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -.05rem;
-  }
-  
-  
-  @media (min-width: 40em) {
-    .carousel-caption p {
-      margin-bottom: 1.25rem;
-      font-size: 1.25rem;
-      line-height: 1.4;
-    }
-  
-    .featurette-heading {
-      font-size: 50px;
-    }
-  }
-  
-  @media (min-width: 62em) {
-    .featurette-heading {
-      margin-top: 7rem;
-    }
-  }
