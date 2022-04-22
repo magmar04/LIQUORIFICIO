@@ -60,7 +60,7 @@
 <div class="container">
   <div class="col-12  order-md-last mt-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-primary">Your cart</span>
+            <span class="text-primary">Il tuo carrello</span>
             <span class="badge bg-secondary rounded-pill"><?php $sql="SELECT quantita FROM carrello"; 
             $prodotti = 0;
             $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");

@@ -46,11 +46,14 @@
                             <a class="nav-link" href="./prodotti.php">Prodotti</a>
                         </li>
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle show" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Area Riservata</a>
-                        <div class="dropdown-menu show" data-bs-popper="none">
-                            <a class="dropdown-item" href="login.php">Login</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Area Riservata</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="registrazione.php">Login</a>
                             <a class="dropdown-item" href="logout.php">Logout</a>
-                        </div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">I miei ordini</a>
+                            </div>
+                        </li>
                     </ul>
                     
                     <form class="d-flex">
@@ -77,7 +80,7 @@
             <div class="carousel-item active">
                 <!-- <svg class="bd-placeholder-img" width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
                 
-                <img class="bd-placeholder-img" src="foto/erbe.jpg" alt="#"  width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <img class="bd-placeholder-img" src="foto/botti.jpg" alt="#"  width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                 <div class="carousel-caption text-start">
                     <h1 style="color: white">Example headline.</h1>

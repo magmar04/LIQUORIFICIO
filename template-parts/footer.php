@@ -1,7 +1,12 @@
-<footer class="bg-primary">
-        <hr>
-        <p class="container text-light" > &copy; Copyright 2022 </p>
-    </footer>
+        <footer class="container">
+            <hr class="featurette-divider">
+            <br />
+            <br />
+            <p class="float-end"><a href="#">Back to top</a></p>
+            <p>&copy; 2021–2022 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+            <br />
+            <br />
+        </footer>
     
     <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
     <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

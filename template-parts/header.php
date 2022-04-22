@@ -47,11 +47,14 @@
                             <a class="nav-link" href="./prodotti.php">Prodotti</a>
                         </li>
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle show" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Area Riservata</a>
-                        <div class="dropdown-menu show" data-bs-popper="none">
-                            <a class="dropdown-item" href="./login.php">Login</a>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </div>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Area Riservata</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="registrazione.php">Login</a>
+                            <a class="dropdown-item" href="logout.php">Logout</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">I miei ordini</a>
+                            </div>
+                        </li>
                     </ul>
                     
                     <form class="d-flex">
