@@ -48,7 +48,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Area Riservata</a>
                             <div class="dropdown-menu">
-                            <a class="dropdown-item" href="registrazione.php">Login</a>
+                            <a class="dropdown-item" href="login.php">Login</a>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">I miei ordini</a>
@@ -59,7 +59,7 @@
                     <form class="d-flex">
                         <a class="nav-link" href="./carrello.php" style="color: white" >
                             <i class="fas fa-shopping-cart"></i>
-                            <span class="badge badge-primary rounded-pill bg-secondary">1</span>
+                            <!-- <span class="badge badge-primary rounded-pill bg-secondary">1</span> -->
                         </a>
                     </form>
 

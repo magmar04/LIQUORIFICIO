@@ -7,17 +7,20 @@
     <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.css">
     <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="./style.css"> -->
-    <?php /*$servername = "localhost", $db_username = "root", $db_password = "", $db_name = "liquori_mariani" */
+    <?php
         session_start();
-        // if(!isset($_SESSION['username'])){
-        //     header('location: registrazione.php');
-        // }
-
-        $servername = "localhost";
-        $db_name = "liquori_mariani";
-        $db_username = "root";
-        $db_password = "";
-        $conn = new mysqli($servername, $db_username, $db_password, $db_name);
+        if(!isset($_SESSION['mail'])){
+            header('location: login.php');
+        }
+        $mail = $_SESSION["mail"];
+		$servername = $_SESSION["servername"];
+		$db_name = $_SESSION["db_name"];
+		$db_username = $_SESSION["db_username"];
+		$db_password = $_SESSION["db_password"];
+		$conn = new mysqli($servername,$db_username,$db_password,$db_name);
+		if($conn->connect_error){
+			die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
+		}
     ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -38,7 +41,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Area Riservata</a>
                             <div class="dropdown-menu">
-                            <a class="dropdown-item" href="registrazione.php">Login</a>
+                            <a class="dropdown-item" href="login.php">Login</a>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">I miei ordini</a>
@@ -49,7 +52,6 @@
                     <form class="d-flex">
                         <a class="nav-link" href="./carrello.php" style="color: white" >
                             <i class="fas fa-shopping-cart"></i>
-                            <span class="badge badge-primary rounded-pill bg-secondary">1</span>
                         </a>
                     </form>
 
@@ -64,7 +66,7 @@
   <div class="col-12  order-md-last mt-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-primary">Il tuo carrello</span>
-            <span class="badge bg-secondary rounded-pill"><?php $sql="SELECT quantita FROM carrello"; 
+            <span class="badge bg-secondary rounded-pill"><?php $sql="SELECT mail, quantita FROM carrello WHERE mail = '$mail'"; 
             $prodotti = 0;
             $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
             if ($ris->num_rows > 0){
@@ -78,46 +80,63 @@
           <ul class="list-group mb-3">
 
             <?php
-            $sql="SELECT mail, codice, quantita, nome, costo, codicep, costo * quantita AS totale FROM carrello LEFT JOIN prodotto ON (codice = codicep)";
-            $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
-            $totale = 0;
-            if ($ris->num_rows > 0){
-                while($row = $ris->fetch_assoc()){
-                    echo"
-                    <li class='list-group-item d-flex justify-content-between lh-sm p-4'>
-                    <div class='row w-100'>
-                        <div class='col-lg-4 col-6'>
-                            <h6 class='my-0'>".$row["nome"]."</h6>
-                        </div>
-                        <div class='col-lg-2 col-6'>
-                            <span class='text-muted'>".number_format($row["costo"], 2, '.', ',')." €</span>
-                        </div>
-                        <div class='col-lg-4 col-6'>
-                            <div class='cart-buttons btn-group' role='group'>
-                                <form action='carrello.php' method='post'> 
-                                <div type='button' class='btn btn-sm btn-secondary'><input type='submit' value='-' name='".$row["codicep"]."+'></div>
-                        
-                                <span>".$row["quantita"]."</span>
-                                
-                                <div type='button' class='btn btn-sm btn-secondary'><input type='submit' value='+' name='piu'></div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class='col-lg-2 col-6'>
-                            <strong class='text-primary'>".number_format($row["totale"], 2, '.', ',')." €</strong>
-                        </div>
-                    </div>
-                  </li>";
-                  $totale += $row["totale"];
-                  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $tmp = $row["quantita"] + 1;
-                    $sql1 = "UPDATE carrello SET quantita = $tmp WHERE codicep = ".$_POST["".$row["codicep"].""]."";
-                    $ris1 = $conn->query($sql1) or die('<p>Query fallita! '.$conn->error.'</p>');
-                    // header("location: carrello.php");
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if(isset($_POST["-"])){
+                        $tmp = $_POST["q"] - 1;
+                        $sql = "UPDATE carrello
+                                SET quantita = $tmp
+                                WHERE mail = '$mail' AND codicep='".$_POST["cod"]."'";
+                        $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
+                        header('location: carrello.php');
+                    } else if(isset($_POST["+"])){
+                        $tmp = $_POST["q"] + 1;
+                        $sql = "UPDATE carrello
+                                SET quantita = $tmp
+                                WHERE mail = '$mail' AND codicep='".$_POST["cod"]."'";
+                        $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
+                        header('location: carrello.php');
                     }
-                } 
-            }
-        ?>
+                }
+                $sql="SELECT mail, codice, quantita, nome, costo, codicep, costo * quantita AS totale 
+                        FROM carrello 
+                        JOIN prodotto ON (codice = codicep)
+                        WHERE mail = '$mail' AND quantita <> '0'";
+                $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
+                $totale = 0;
+                if ($ris->num_rows > 0){
+                    while($row = $ris->fetch_assoc()){
+                        echo"<li class='list-group-item d-flex justify-content-between lh-sm p-4'>
+                                <div class='row w-100'>
+                                    <div class='col-lg-4 col-6'>
+                                        <h6 class='my-0'>".$row["nome"]."</h6>
+                                    </div>
+                                    <div class='col-lg-2 col-6'>
+                                        <span class='text-muted'>".number_format($row["costo"], 2, '.', ',')." €</span>
+                                    </div>
+                                    <div class='col-lg-4 col-6'>
+                                        <div class='cart-buttons btn-group' role='group'>
+                                            <form action=".$_SERVER['PHP_SELF']." method='post'>
+                                                <input style='display: none' type='text' name='cod' value=".$row["codicep"].">
+                                                <input style='display: none' type='text' name='q' value=".$row["quantita"].">
+                                                <button type='submit' name='-' class='btn btn-sm btn-secondary'>-</button>
+                                            </form>
+                                            <span>".$row["quantita"]."</span>
+                                            <form action=".$_SERVER['PHP_SELF']." method='post'>
+                                                <input style='display: none' type='text' name='cod' value=".$row["codicep"].">
+                                                <input style='display: none' type='text' name='q' value=".$row["quantita"].">                         
+                                                <button type='submit' name='+' class='btn btn-sm btn-secondary'>+</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class='col-lg-2 col-6'>
+                                        <strong class='text-primary'>".number_format($row["totale"], 2, '.', ',')." €</strong>
+                                    </div>
+                                </div>
+                            </li>";
+                        $totale += $row["totale"];
+                    } 
+                }   
+            ?>
 
             <li class="cart-total list-group-item d-flex justify-content-between p-4">
             <div class="row w-100">
@@ -134,11 +153,13 @@
 
           </ul>
 
-          <hr>
+          <!-- <hr> -->
           <button class="btn btn-primary btn-block">Checkout</button>
+          <br />
+          <br />
+          <br />
   </div>
 </div>
 
 
 <?php include './template-parts/footer.php' ?>
-

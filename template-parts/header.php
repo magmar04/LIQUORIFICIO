@@ -7,29 +7,6 @@
     <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.css">
     <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="./style.css"> -->
-    <?php /*$servername = "localhost", $db_username = "root", $db_password = "", $db_name = "liquori_mariani" */
-        session_start();
-        if(isset($_SESSION['username'])){
-            header('location: index.php');
-        }
-        if ($_SERVER["REQUEST_METHOD"] == "POST"){
-            $mail = $_POST["mail"];
-            $password = $_POST["pw"];
-            $servername = "localhost";
-            $db_name = "liquori_mariani";
-            $db_username = "root";
-            $db_password = "";
-        } else {
-            $username = "";
-            $password = "";
-        }
-
-        $servername = "localhost";
-            $db_name = "liquori_mariani";
-            $db_username = "root";
-            $db_password = "";
-        $conn = new mysqli($servername, $db_username, $db_password, $db_name);
-    ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -49,7 +26,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Area Riservata</a>
                             <div class="dropdown-menu">
-                            <a class="dropdown-item" href="registrazione.php">Login</a>
+                            <a class="dropdown-item" href="login.php">Login</a>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">I miei ordini</a>
@@ -60,7 +37,6 @@
                     <form class="d-flex">
                         <a class="nav-link" href="./carrello.php" style="color: white" >
                             <i class="fas fa-shopping-cart"></i>
-                            <span class="badge badge-primary rounded-pill bg-secondary">1</span>
                         </a>
                     </form>
 
@@ -69,5 +45,3 @@
         </div>
         
         </nav>
-
-        
