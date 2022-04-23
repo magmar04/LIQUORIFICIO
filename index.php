@@ -22,6 +22,11 @@
             user-select: none;
         }
 
+        #npt {
+        padding-top: 0px;
+        }
+
+
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
             font-size: 3.5rem;
@@ -31,7 +36,7 @@
         
         <link href="https://getbootstrap.com/docs/5.1/examples/carousel/carousel.css" rel="stylesheet">
     </head>
-    <body>
+    <body id="npt">
     
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -80,12 +85,12 @@
             <div class="carousel-item active">
                 <!-- <svg class="bd-placeholder-img" width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
                 
-                <img class="bd-placeholder-img" src="foto/botti.jpg" alt="#"  width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <img class="bd-placeholder-img" src="foto/botti-carousel.jpg" alt="#"  width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                 <div class="carousel-caption text-start">
-                    <h1 style="color: white">Example headline.</h1>
-                    <p>Some representative placeholder content for the first slide of the carousel.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                    <h1 style="color: white">Non hai ancora un account?</h1>
+                    <p>Registarti per poter iniziare lo shopping nel nostro store!</p>
+                    <p><a class="btn btn-lg btn-primary" href="login.php">Registrati oggi</a></p>
                 </div>
                 </div>
             </div>
@@ -94,20 +99,20 @@
 
                 <div class="container">
                 <div class="carousel-caption">
-                    <h1 style="color: white">Another example headline.</h1>
-                    <p>Some representative placeholder content for the second slide of the carousel.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                    <h1 style="color: black">Dove siamo?</h1>
+                    <p style="color: black">L'azienda si trova a Concorezzo (Mb); in una posizione favorevole.</p>
+                    <p><a class="btn btn-lg btn-primary" href="https://www.google.com/maps/place/Liquorificio+Mariani+Srl/@45.5840771,9.345817,15z/data=!4m2!3m1!1s0x0:0x779946ab8d7cedab?sa=X&ved=2ahUKEwjd9_7Y8KT3AhVGHc0KHVzoDAIQ_BJ6BAhNEAU">Guarda mappa</a></p>
                 </div>
                 </div>
             </div>
             <div class="carousel-item">
-            <img class="bd-placeholder-img" src="foto/erbe.jpg" alt="#"  width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <img class="bd-placeholder-img" src="foto/campi.jpg" alt="#"  width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
 
                 <div class="container">
                 <div class="carousel-caption text-end">
-                    <h1 style="color: white">One more for good measure.</h1>
-                    <p>Some representative placeholder content for the third slide of this carousel.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                    <h1 style="color: white">Un'azienda ecosostenibile.</h1>
+                    <p>LIQUORIFICIO MARIANI S.R.L. è sempre stata un’azienda sensibile alle problematiche ecologiche</p>
+                    <p><a class="btn btn-lg btn-primary" href="http://www.liquorimariani.it/ecosostenibile/">Guarda dati</a></p>
                 </div>
                 </div>
             </div>

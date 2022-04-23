@@ -119,9 +119,9 @@
                                                 <input style='display: none' type='text' name='cod' value=".$row["codicep"].">
                                                 <input style='display: none' type='text' name='q' value=".$row["quantita"].">
                                                 <button type='submit' name='-' class='btn btn-sm btn-secondary'>-</button>
-                                            </form>
-                                            <span>".$row["quantita"]."</span>
-                                            <form action=".$_SERVER['PHP_SELF']." method='post'>
+                                            
+                                                <span>".$row["quantita"]."</span>
+                                            
                                                 <input style='display: none' type='text' name='cod' value=".$row["codicep"].">
                                                 <input style='display: none' type='text' name='q' value=".$row["quantita"].">                         
                                                 <button type='submit' name='+' class='btn btn-sm btn-secondary'>+</button>
