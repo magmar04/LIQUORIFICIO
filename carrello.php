@@ -154,7 +154,7 @@
           </ul>
 
           <!-- <hr> -->
-          <button class="btn btn-primary btn-block">Checkout</button>
+          <a href="checkout.php" style="color:white"><button class="btn btn-primary btn-bloc">Checkout</button></a>
           <br />
           <br />
           <br />
