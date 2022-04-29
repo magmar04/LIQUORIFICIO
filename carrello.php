@@ -44,7 +44,7 @@
                             <a class="dropdown-item" href="login.php">Login</a>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">I miei ordini</a>
+                            <a class="dropdown-item" href="ordini.php">I miei ordini</a>
                             </div>
                         </li>
                     </ul>

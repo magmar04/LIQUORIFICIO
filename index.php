@@ -56,7 +56,7 @@
                             <a class="dropdown-item" href="login.php">Login</a>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">I miei ordini</a>
+                            <a class="dropdown-item" href="ordini.php">I miei ordini</a>
                             </div>
                         </li>
                     </ul>
@@ -106,13 +106,13 @@
                 </div>
             </div>
             <div class="carousel-item">
-            <img class="bd-placeholder-img" src="foto/campi.jpg" alt="#"  width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <img class="bd-placeholder-img" src="foto/erbe.jpg" alt="#"  width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
 
                 <div class="container">
                 <div class="carousel-caption text-end">
-                    <h1 style="color: white">Un'azienda ecosostenibile.</h1>
-                    <p>LIQUORIFICIO MARIANI S.R.L. è sempre stata un’azienda sensibile alle problematiche ecologiche</p>
-                    <p><a class="btn btn-lg btn-primary" href="http://www.liquorimariani.it/ecosostenibile/">Guarda dati</a></p>
+                    <h1 style="color: white">La nostra storia.</h1>
+                    <p style="color: white">LIQUORIFICIO MARIANI S.R.L. è un'azienda mitologica.</p>
+                    <p><a class="btn btn-lg btn-primary" href="#ancora">Chi siamo</a></p>
                 </div>
                 </div>
             </div>
@@ -168,7 +168,7 @@
 
             <div class="row featurette">
             <div class="col-md-7">
-                <h2 class="featurette-heading">La nostra storia. <span class="text-muted">Liquorificio Mariani SRL.</span></h2>
+                <h2 class="featurette-heading" name="ancora">La nostra storia. <span class="text-muted">Liquorificio Mariani SRL.</span></h2>
                 <p class="lead">Il 14 luglio del 1978 Mariani Luigi, dopo aver maturato un’esperienza trentennale come liquorista in aziende di successo, con l’intento di produrre in proprio liquori di qualità superiore, fonda il LIQUORIFICIO MARIANI S.R.L. con sede a Concorezzo in Via Agrate 105.</p>
             </div>
             <div class="col-md-5">
