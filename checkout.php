@@ -73,7 +73,7 @@
           </form>
           <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                  if (ctype_digit($_POST["carta"]) == true){
+                  if (ctype_digit($_POST["carta"]) == true ){
                     $sql=" SELECT codicep, quantita FROM carrello WHERE mail = '".$mail."' ";
                     $ris = $conn->query($sql) or die("<p>Query fallita! ".$conn->error."</p>");
                     if ($ris->num_rows > 0) {
@@ -86,16 +86,15 @@
                         ";
                         $ris1 = $conn->query($sql1) or die("<p>Query fallita! ".$conn->error."</p>");
                       }
-                      header ('location: fine.php');
+                      
                       $sql2 = "DELETE FROM carrello WHERE mail = '".$mail."' ";
                       $ris2 = $conn->query($sql2) or die("<p>Query fallita! ".$conn->error."</p>");
+                      header ('location: fine.php');
                     }
                   } 
                 }
             ?>
-        
               <br />
-
               <button class="btn btn-primary btn-bloc" type="submit">Acquista</button>
           </div>
           
